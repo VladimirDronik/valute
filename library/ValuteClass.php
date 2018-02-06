@@ -41,16 +41,8 @@ class ValuteClass {
              /** основываясь на цифре в конце названия ресурса (номер обработчика) -
              *определяем какой класс использовать для обработки
              */
-             switch ($process_value){
-
-                 case 1:
-                     $resource_object = new \library\ReadClass1();
-                     break;
-
-                 case 2:
-                     $resource_object = new \library\ReadClass2();
-                     break;
-             }
+             $process_value = '\library\ReadClass'.trim($process_value);
+             $resource_object = new $process_value();
 
              $resource_object->resource = $resourceurl;
 
